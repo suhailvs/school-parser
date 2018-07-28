@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block extracss %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<h1> Add new School</h1>	
+	<br><br>
+	<form method="post">{% csrf_token %}
+	  <div class="form-row align-items-center">
+	    <div class="col-auto my-1">
+	      <input type="text" class="form-control" name="url_id" placeholder="School url_id">
+	    </div>
+	    <div class="col-auto my-1">
+	      <button type="submit" class="btn btn-primary">Parse and add school</button>
+	    </div>
+	  </div>
+	</form>
+	<hr>
+	<div class="card" style="width: 25rem;">
+	  <div class="card-header">
+	    <a href="http://103.251.43.156/schoolfixation/index.php/Publicview/"> District wise Schools</a>
+	  </div>
+	  <ul class="list-group list-group-flush">
+	  	{% for school in schools %}
+		<li class="list-group-item"> <a href="{% url 'school_view' school.code %}">{{school.name}} </li>
+		{% endfor %}
+	  </ul>
+	</div>
+</div>
+{% endblock %}

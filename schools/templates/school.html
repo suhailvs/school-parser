@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block extracss %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<br><br>
+  <!-- School info -->
+  <div class="card">
+    <div class="card-header"> <strong>School Name: </strong><a href="http://103.251.43.156/schoolfixation/index.php/Publicview/index/schoolsdetails/{{school.url_id}}">{{school.name}}</a></div>
+    <div class="card-body">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>School Code</th>
+            <th>District</th>
+            <th>Educational District</th>
+            <th>Sub District</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{school.code }} </td>
+            <td>{{school.district }} </td>
+            <td>{{school.edu_district }} </td>
+            <td>{{school.sub_district }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Basic School info -->
+  <div class="card">
+    <div class="card-header"> <strong>Basic School Information: </strong></div>
+    <div class="card-body">
+      <table class="table table-bordered table-sm">        
+        <tbody>
+          <tr>
+            <td>School Establishment Date:</td>
+            <td>{{school.basic_info.establish_date}}</td>            
+          </tr>
+          <tr>
+            <td>Total School Area:</td>
+            <td>{{school.basic_info.area }}</td>            
+          </tr>
+          <tr>
+            <td>Total No. of Rooms:</td>
+            <td>{{school.basic_info.rooms}} </td>            
+          </tr>
+          <tr>
+            <td>Total Teaching Staff:</td>
+            <td>{{school.basic_info.teaching_staffs}}</td>
+          </tr>
+          <tr>
+            <td>Total Non-Teaching Staff:</td>  
+            <td>{{school.basic_info.non_teaching_staffs}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Class Wise School Strength -->
+  <div class="card">
+    <div class="card-header"> <strong>Class Wise Student Strength 2014-15: </strong></div>
+    <div class="card-body">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Strength(2014 - 2015) Based on Sixth Working day:</th>
+            <th>Strength(2014 - 2015) Based on Sampoorna</th>
+            <th>Total available UID:</th>
+            <th>Valid UID:</th>
+            <th>Partialy Match UID:</th>
+            <th>Invalid UID:</th>
+            <th>None</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in school.students.all %}
+          <tr>
+            <td>{{student.course}} </td>
+            <td>{{student.strength}} </td>
+            <td>{{student.sampoorna}} </td>
+            <td>{{student.available_uid}} </td>
+            <td>{{student.valid_uid}} </td>
+            <td>{{student.partialy_match_uid}} </td>
+            <td>{{student.invalid_uid}} </td>
+            <td>{{student.none}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Class Wise School Strength -->
+  <div class="card">
+    <div class="card-header"> <strong>Staff Fixation Strength Details </strong></div>
+    <div class="card-body">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Designation Name</th>
+            <th>Strength</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for staff in school.staffstrength.all %}
+          <tr>
+            <td>{{staff.designation}}</td>
+            <td>{{staff.strength}} </td>
+            <td>{{staff.year}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+  <!-- Class Wise School Strength -->
+  <div class="card">
+    <div class="card-header"> <strong>Employee Details </strong></div>
+    <div class="card-body">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Sl No.</th>
+            <th>Name of Employee</th>
+            <th>Designation</th>
+            <th>Date of Joining</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for staff in school.staffs.all %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{staff.name}} </td>
+            <td>{{staff.designation}} </td>
+            <td>{{staff.date_of_join}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>
+{% endblock %}
