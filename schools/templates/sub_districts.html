@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block extracss %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+	<div class="card" style="width: 25rem;">
+	  <div class="card-header">
+	    <strong> Sub District wise Schools</strong>
+	  </div>
+	  <ul class="list-group list-group-flush">
+	  	{% for sub_district in sub_districts %}
+		<li class="list-group-item"> <a href="{% url 'schools' %}?sub_district={{sub_district}}">{{sub_district}} </a></li>
+		{% endfor %}
+	  </ul>
+	</div>
+
+{% endblock %}

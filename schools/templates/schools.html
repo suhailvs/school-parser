@@ -6,10 +6,9 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-	<h1> Schools</h1>
-	<br><br>
-	<form method="post">{% csrf_token %}
+
+	<p class="lead"> Search Schools</p>	
+	<form method="get">
 	  <div class="form-row align-items-center">
 	  	<!--	    
 	    <div class="col-auto my-1">
@@ -21,7 +20,7 @@
 	    </div>
 	    -->
 	    <div class="col-auto my-1">
-	      <input type="text" class="form-control" name="query" placeholder="District/Sub District">
+	      <input type="text" class="form-control" name="name" placeholder="School Name" required>
 	    </div>
 	    <div class="col-auto my-1">
 	      <button type="submit" class="btn btn-primary">Search school</button>
@@ -29,17 +28,20 @@
 	  </div>
 	</form>
 	<hr> 
-
-	<br><br>
+	{% if q %}
+	<div class="alert alert-primary">
+		Filtered by: {{q}}
+	</div>
+	{% endif %}
 	<div class="card" style="width: 25rem;">
 	  <div class="card-header">
-	    Schools
+	    Schools ({{schools.count}})
 	  </div>
 	  <ul class="list-group list-group-flush">
 	  	{% for school in schools %}
-		<li class="list-group-item"> <a href="{% url 'school_view' school.code %}">{{school.name}} </li>
+		<li class="list-group-item"><small>{{forloop.counter}}. </small><a href="{% url 'school_view' school.code %}">{{school.name}} </a></li>
 		{% endfor %}
 	  </ul>
 	</div>
-</div>
+
 {% endblock %}

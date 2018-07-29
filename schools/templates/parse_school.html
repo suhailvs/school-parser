@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block extracss %}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+	<p class="lead"> Parse a School from url id</p>
+	<form method="post">{% csrf_token %}
+	  <div class="form-row align-items-center">
+	    <div class="col-auto my-1">
+	      <input type="text" class="form-control" name="url_id" placeholder="School url_id">
+	    </div>
+	    <div class="col-auto my-1">
+	      <button type="submit" class="btn btn-primary">Parse and add school</button>
+	    </div>
+	  </div>
+	</form>
+
+{% endblock %}

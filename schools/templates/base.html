@@ -17,17 +17,21 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="{% url 'schools' %}">Schools</a>
-        <a class="nav-item nav-link" href="{% url 'home' %}">Add School</a>
+        <a class="nav-item nav-link" href="{% url 'schools' %}">Search Schools</a>
+        <a class="nav-item nav-link" href="{% url 'parse_a_school' %}">Add School</a>
       </div>
     </div>
   </nav>
+  <br><br>
+  <div class="container"> 
   {% block body %} 
   {% endblock %}
+  </div>
   
   {% block js %} 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>     
   {% endblock %}
+  <br><br>
   </body>
 </html>

@@ -18,6 +18,7 @@ class School(models.Model):
     sub_district = models.CharField(max_length=30)
     url_id = models.IntegerField(blank =True, null = True)
     basic_info = models.ForeignKey(BasicInfo,on_delete=models.CASCADE,null=True)
+    created_on = models.DateTimeField(auto_now_add = True)
     
     # staff_strength = models.ForeignKey(StaffStrength,on_delete=models.CASCADE,null=True)
     #staff = models.ForeignKey(Staff,on_delete=models.CASCADE,null=True)
@@ -52,3 +53,9 @@ class Staff(models.Model):
 
     def __str__(self):
         return self.name
+
+"""
+class SubDistrict(models.Model):
+    name = models.CharField(max_length=30)
+    district = models.CharField(max_length=30)
+"""
